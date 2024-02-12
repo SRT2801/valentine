@@ -1,6 +1,8 @@
+
 import { useState } from "react";
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
 import lovesvg2 from "./assets/Love In The Air SVG Cut File.svg";
+import imagenes from "./imagenes/imagen";
 
 export default function Page() {
   const [noCount, setNoCount] = useState(0);
@@ -9,6 +11,17 @@ export default function Page() {
 
   const handleNoClick = () => {
     setNoCount(noCount + 1);
+  };
+
+  const getNoButtonImage = () => {
+    const images = [
+      "https://gifdb.com/images/high/cute-Love-bear-roses-ou7zho5oosxnpo6k.gif",
+      ...imagenes,
+    ];
+
+    
+  
+    return images[Math.min(noCount, images.length - 1)];
   };
 
   const getNoButtonText = () => {
@@ -58,7 +71,8 @@ export default function Page() {
           />
           <img
             className="h-[230px] rounded-lg shadow-lg"
-            src="https://gifdb.com/images/high/cute-Love-bear-roses-ou7zho5oosxnpo6k.gif"
+            src={getNoButtonImage()}
+            alt="No button image"
           />
           <h1 className="text-4xl md:text-6xl my-4 text-center">
             Will you be my Valentine?
